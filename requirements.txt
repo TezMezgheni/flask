@@ -1,0 +1,5 @@
+Flask~=2.0.2
+flask_restful
+youtube-transcript-api
+transformers[torch]
+sentencepiece
