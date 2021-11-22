@@ -46,8 +46,8 @@ def get_yt_video_id(url):
 
 class Summary(Resource):
     def get(self):
-        video_link = request.json["videoLink"]
-        summary_alg = request.json["alg"]
+        video_link = request.args["link"]
+        summary_alg = request.args["algorithm"]
         if len(video_link) == 0:
             abort(404)
         if not request.json:
@@ -71,14 +71,14 @@ class Transcript(Resource):
     def get(video_id=None):
 
         if video_id is None:
-            video_id = request.json["video_id"]
+            video_id = request.args["video_id"]
         # print(video_id)
         trans = Transcript.transcript_parser(video_id)
         return trans
 
 
-api.add_resource(Transcript, "/api/videos/transcript/")
-api.add_resource(Summary, "/api/videos/summary")
+api.add_resource(Transcript, "/transcript/")
+api.add_resource(Summary, "/summary/")
 
 
 @app.route('/')

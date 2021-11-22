@@ -30,25 +30,16 @@
     <br>
     <br>
     <div class="custom-select" style="margin-top: -5px;">
-        <select id="percent-dropdown">
-            <option class="dropdown-text" value="0">Summary %</option>
-            <option class="dropdown-text" value="1">10%</option>
-            <option class="dropdown-text" value="2">20%</option>
-            <option class="dropdown-text" value="3">30%</option>
-            <option class="dropdown-text" value="4">40%</option>
-            <option class="dropdown-text" value="5">50%</option>
-            <option class="dropdown-text" value="6">60%</option>
-            <option class="dropdown-text" value="7">70%</option>
+        <select  id="choice-dropdown">
+            <option class="dropdown-text" value="T5">T5</option>
+            <option value="pipeline">pipeline</option>
         </select>
-        <br>
-
-        <label for="percent-dropdown">Select a percentage. (Tip: Select 20 or 30)<br>Summary will be presented in
-            approx. X% lines of the available transcript.</label>
-
+        <label for="choice-dropdown"> <br> Select which algorithm to execute ! <br>
+        TIP: pick pipeline for faster summary</label>
     </div>
     <br>
 <!--Button for Making Summarization Request-->
-    <button class="button" style="margin-top: -5px;" id="my_button" disabled><b>Summarize</b></button>
+    <button class="button" style="margin-top: -5px;" id="my_button" ><b>Summarize</b></button>
 </div>
 <!--Text Div: Summary Status and Response-->
 <div id="text_out_main" style="display: none;">
@@ -57,7 +48,7 @@
     <h5 id="re_summarize" style="display: none;">
         Click <a href="javascript:location.reload();">here</a> to summarize another video.</h5>
 </div>
-<script src="web.js"></script>
+<script src="link.js"></script>
 
 
 
