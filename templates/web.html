@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@300;400&display=swap"
           rel="stylesheet">
     <!--Add web.css to this HTML file.-->
-    <link rel="stylesheet" href="web.css">
+    <link rel="stylesheet" href="../static/web.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Add title to this HTML file.-->
     <title>YouTube Transcript Summarizer | Web Summarizer</title>
@@ -16,7 +16,7 @@
 
     </head>
    <body>   
-<img src="yt_icon_rgb.svg" height="64" width="64" alt="YouTube Icon">  
+<img src="../static/yt_icon_rgb.svg" height="64" width="64" alt="YouTube Icon">
 <!--Titles-->
 <h1 style="font-weight: 300;">YouTube Transcript Summarizer</h1>
 <h3 style="font-family: 'Open Sans', sans-serif; font-weight: 300;">Get Summarization Done<br>Directly within your
@@ -30,16 +30,16 @@
     <br>
     <br>
     <div class="custom-select" style="margin-top: -5px;">
-        <select  id="choice-dropdown">
+        <select  id="choice_dropdown">
             <option class="dropdown-text" value="T5">T5</option>
             <option value="pipeline">pipeline</option>
         </select>
-        <label for="choice-dropdown"> <br> Select which algorithm to execute ! <br>
+        <label for="choice_dropdown"> <br> Select which algorithm to execute ! <br>
         TIP: pick pipeline for faster summary</label>
     </div>
     <br>
 <!--Button for Making Summarization Request-->
-    <button class="button" style="margin-top: -5px;" id="my_button" ><b>Summarize</b></button>
+    <button class="button" style="margin-top: -5px;" id="my_button" onclick="summarize()"><b>Summarize</b></button>
 </div>
 <!--Text Div: Summary Status and Response-->
 <div id="text_out_main" style="display: none;">
@@ -48,7 +48,7 @@
     <h5 id="re_summarize" style="display: none;">
         Click <a href="javascript:location.reload();">here</a> to summarize another video.</h5>
 </div>
-<script src="link.js"></script>
+<script src="../static/web.js"></script>
 
 
 

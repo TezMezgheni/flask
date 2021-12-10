@@ -2,9 +2,6 @@ html, body {
     height: 100%;
 }
 
-
-
-
 html {
     padding: 20px;
     display: table;
@@ -78,3 +75,6 @@ input{
     color: #282828;
 }
 
+.dropdown-text {
+    font-size: 14px;
+}

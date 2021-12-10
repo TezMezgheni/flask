@@ -1,8 +1,9 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify, render_template
 from flask_restful import Api, Resource, abort
 from youtube_transcript_api import YouTubeTranscriptApi
 import Summarize
 from urllib.parse import *
+from waitress import serve
 
 app = Flask(__name__)
 api = Api(app)
@@ -47,17 +48,14 @@ def get_yt_video_id(url):
 class Summary(Resource):
     def get(self):
         video_link = request.args["link"]
-        summary_alg = request.args["algorithm"]
         if len(video_link) == 0:
             abort(404)
-        if not request.json:
+        if not request.args:
             abort(400)
         video_id = get_yt_video_id(video_link)
         transcript_string = Transcript.get(video_id)
-        if len(transcript_string) >= 1024:
-            summary_alg = "T5"
-        summarized_text = Summarize.summarize(transcript_string, summary_alg)
-        return summarized_text
+        summarized_text = Summarize.summarize(transcript_string)
+        return jsonify(result=summarized_text, message="success")
 
 
 class Transcript(Resource):
@@ -81,10 +79,18 @@ api.add_resource(Transcript, "/transcript/")
 api.add_resource(Summary, "/summary/")
 
 
+@app.route('/web/')
+def summarizer_web():
+    # We are at web.html, online input boxes are there to summarize the given video URL.
+    # Displaying web.html to the end user
+    return render_template('web.html')
+
+
 @app.route('/')
 def hello_world():
     return 'Hello World!'
 
 
 if __name__ == '__main__':
+    # serve( , host='0.0.0.0', port=8080)
     app.run()
